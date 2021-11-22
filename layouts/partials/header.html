@@ -1,10 +1,18 @@
 {{ $header := print "_header." .Lang }}
 	{{ range where .Site.Pages "File.BaseFileName" $header }}
-	{{ .Content }} 
+	{{ .Content }}
 	{{else}}
   {{ if .Site.GetPage "page" "_header.md" }}
     {{(.Site.GetPage "page" "_header.md").Content}}
   {{else}}
-    <a class="baselink" href="{{.Site.BaseURL}}">{{.Site.Title}}</a>
+		{{ $logo:= .Site.Params.logo }}
+		{{ $logoWhite:= .Site.Params.logo_white }}
+		{{ if (or $logo $logoWhite) }}
+			<a class="navbar-brand" href="{{ .Site.BaseURL | relLangURL }}">
+				<img class="img-fluid" src="{{if $logoWhite }}{{ $logoWhite | absURL }} {{ else }} {{ $logo | absURL }}{{ end }}" alt="{{ .Site.Title }}">
+			</a>
+		{{ else }}
+    	<a class="baselink" href="{{.Site.BaseURL}}">{{.Site.Title}}</a>
+		{{ end }}
   {{end}}
 {{end}}

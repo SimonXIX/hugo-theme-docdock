@@ -1409,3 +1409,7 @@ pre .copy-to-clipboard:hover {
     margin-left: 0px; } }
 
 /*# sourceMappingURL=style.css.map */
+
+  .gdpr-modal {
+    z-index: 9999;
+  }
