@@ -6,22 +6,6 @@
         var baseurl = "{{.Site.BaseURL}}";
     {{end}}
 </script>
-<script>
-  // Compliance dialog
-  function acceptGDPR() {
-    localStorage.setItem('gdpr_accepted', true);
-    window.location.reload();
-  };
-
-  (function() {
-    if(!localStorage.getItem('gdpr_accepted')) {
-      const e = document.getElementById('gdpr-modal');
-      if(!e) return;
-
-      e.style.display = 'block';
-    }
-  })();
-</script>
 <script src="{{"js/clipboard.min.js" | relURL}}"></script>
 <script src="{{"js/featherlight.min.js" | relURL}}"></script>
 <script src="{{"js/html5shiv-printshiv.min.js" | relURL}}"></script>
